@@ -87,22 +87,7 @@ const ExperienceSection = () => {
             </ul>
           </div>
 
-          {/* Right Certificate */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="md:w-1/3 bg-white p-5 sm:p-6 rounded-2xl shadow-lg text-center flex flex-col justify-center items-center transition-all"
-          >
-            <FileText className="text-indigo-600 w-7 h-7 sm:w-9 sm:h-9 mb-3" />
-            <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">Certificate</h4>
-            <a
-              href="https://example.com/certificate.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-indigo-600 hover:underline text-sm"
-            >
-              View Certificate <ExternalLink className="w-4 h-4" />
-            </a>
-          </motion.div>
+         
         </div>
       </motion.div>
     </div>

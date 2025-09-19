@@ -14,6 +14,7 @@ import MyStory from './components/MyStory'
 import Experience from './components/Experience'
 import CertificateSection from './components/Certifiaction';
 import { SmoothScrollHero } from './components/Try';
+import ExperienceSection from './components/Experience';
 
 
 
@@ -112,7 +113,9 @@ export default function App() {
 <CertificateSection></CertificateSection>
   
 </section>
-
+<section id="experience">
+  <ExperienceSection></ExperienceSection>
+</section>
 
 <GitHubSection></GitHubSection>
 <section id="Resume">

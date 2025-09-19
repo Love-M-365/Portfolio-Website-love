@@ -14,6 +14,7 @@ export default function Home() {
     { label: "Skills", link: "#skills" },
     { label: "Projects", link: "#projects" },
      { label: "MyStory", link: "#ms" },
+      { label: "Experience", link: "#experience" },
     { label: "Certificates", link: "#certification" },
     { label: "Resume", link: "#Resume" },
     { label: "Connect", link: "#connect" },
