@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowDownCircle, Eye } from "lucide-react";
 import resumePDF from "../assets/resume.pdf";
-import resumeThumb from "../assets/resume-thumbnail.png"; 
+import resumeThumb from "../assets/resume-thumbnail.jpg"; 
 
 export default function ResumePage() {
   return (

@@ -16,7 +16,7 @@ import CertificateSection from './components/Certifiaction';
 import { SmoothScrollHero } from './components/Try';
 import ExperienceSection from './components/Experience';
 
-
+import GoogleHackathonAchievement from './components/Achieve';
 
 // Little helpers ...
 const url = (name, wrap = false) =>
@@ -101,6 +101,9 @@ export default function App() {
   
     <CircularGallery bend={2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
   
+</section>
+<section id='ach'>
+  <GoogleHackathonAchievement></GoogleHackathonAchievement>
 </section>
 <section id='ms'>
   <MyStory></MyStory>

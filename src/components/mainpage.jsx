@@ -12,9 +12,10 @@ export default function Home() {
   const navLinks = [
     { label: "Home", link: "#home" },
     { label: "Skills", link: "#skills" },
+    { label: "Achievemnts", link: "#ach" },
+    { label: "MyStory", link: "#ms" },   
     { label: "Projects", link: "#projects" },
-     { label: "MyStory", link: "#ms" },
-      { label: "Experience", link: "#experience" },
+    { label: "Experience", link: "#experience" },
     { label: "Certificates", link: "#certification" },
     { label: "Resume", link: "#Resume" },
     { label: "Connect", link: "#connect" },
