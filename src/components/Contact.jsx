@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Send, Mail, Linkedin, Github, Instagram } from "lucide-react";
-
+import { SiLeetcode } from "react-icons/si";
 export default function Contact() {
   const form = useRef();
   const [status, setStatus] = useState("");
@@ -70,6 +70,14 @@ export default function Contact() {
             >
               <Instagram size={36} />
             </a>
+            <a
+  href="https://leetcode.com/loveM"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-black hover:text-yellow-500 transition"
+>
+  <SiLeetcode size={36} />
+</a>
           </div>
         </div>
 

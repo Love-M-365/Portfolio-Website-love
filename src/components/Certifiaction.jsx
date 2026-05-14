@@ -5,9 +5,16 @@ import js from "../assets/jscertificate.png";
 import iit from "../assets/iitcertify.png";
 import google from "../assets/googlecertify.png"
 import prompt from "../assets/prompt.png"
+import genai from "../assets/genai.jpg"
 
 
 const certificates = [
+  {
+    title: "Google Cloud Gen AI Exchange Hackathon Certificate",
+    image: genai,
+    issuer: "Google Cloud | Hack2skill",
+    viewLink: genai, // or upload to public folder and give URL
+  },
   {
     title: "Responsive Web Design Certificate",
     image: freecodecamp,
@@ -38,12 +45,7 @@ const certificates = [
     issuer: "IIT",
     viewLink: iit,
   },
-   {
-    title: "Sollution Challenge certificate by Google",
-    image: google,
-    issuer: "Hack2Skill- Google",
-    viewLink: google,
-  },
+  
 ];
 
 const CertificateSection = () => {

@@ -1,96 +1,340 @@
 import React from 'react';
-import { Briefcase, Calendar, Code, User, FileText, ExternalLink } from 'lucide-react';
+import {
+  Calendar,
+  Smartphone,
+  Globe,
+  Cloud,
+  Star,
+  Zap,
+  Trophy,
+  Shield,
+  CreditCard,
+  CheckCircle2,
+  ExternalLink,
+  Rocket,
+  Store,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const achievements = [
+  'Finalist at Google Cloud Exchange Hackathon 2025 (Top 10 among 185,000+ teams).',
+  'Built AI-powered wellness app using Flutter + Firebase + Google Cloud.',
+  'Solved 200+ LeetCode problems with strong problem-solving skills.',
+  'Shortlisted in Top teams across 6 hackathons with multiple end-to-end projects.',
+];
+
+const onitFeatures = [
+  { icon: Smartphone, label: "2 Apps Built",     desc: "Task Provider & Task Performer", color: "#818cf8" },
+  { icon: Store,      label: "Play Store Live",  desc: "Both apps shipped & published",  color: "#34d399" },
+  { icon: CreditCard, label: "Razorpay Gateway", desc: "In-app payment integration",     color: "#60a5fa" },
+  { icon: Shield,     label: "Role-based Auth",  desc: "Secure access management",       color: "#a78bfa" },
+  { icon: Cloud,      label: "AWS Backend",      desc: "Scalable cloud infrastructure",  color: "#38bdf8" },
+  { icon: Zap,        label: "Hybrid Startup",   desc: "IIIT Delhi environment",         color: "#fbbf24" },
+];
 
 const ExperienceSection = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
   return (
-    <div className="bg-black py-16 px-4 sm:px-6 md:px-20">
-      {/* Section Title */}
-      <motion.h2
-        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-100 mb-10 flex justify-center items-center gap-2"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        Experience
-        <motion.span
-          className="text-yellow-400"
-          animate={{
-            scale: [1, 1.4, 1],
-            opacity: [1, 0.8, 1],
-            rotate: [0, 15, -15, 0],
-            filter: [
-              "drop-shadow(0 0 2px #facc15)",
-              "drop-shadow(0 0 4px #facc15)",
-              "drop-shadow(0 0 2px #facc15)",
-            ],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+    <section
+      id="experience"
+      style={{
+        background: "#030712",
+        fontFamily: "'DM Sans', sans-serif",
+        position: "relative",
+        overflow: "hidden",
+      }}
+      className="py-24 px-6 sm:px-12 lg:px-24"
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=DM+Sans:wght@300;400;500;700&display=swap');
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* Card inner padding: tight on mobile, roomy on desktop */
+        .card-pad       { padding: 20px 18px 24px; }
+        @media (min-width: 640px)  { .card-pad { padding: 28px 28px 32px; } }
+        @media (min-width: 1024px) { .card-pad { padding: 36px 36px 40px; } }
+
+        /* Feature grid: 1 col mobile → 2 col sm → 3 col lg */
+        .onit-features { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        @media (min-width: 640px)  { .onit-features { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+        @media (min-width: 1024px) { .onit-features { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+
+        /* Bullet columns: single on mobile, 2-col on lg */
+        .onit-points { columns: 1; column-gap: 28px; }
+        @media (min-width: 1024px) { .onit-points { columns: 2; } }
+
+        /* Play Store button */
+        .playstore-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: linear-gradient(135deg, rgba(52,211,153,0.15), rgba(52,211,153,0.08));
+          border: 1px solid rgba(52,211,153,0.35);
+          border-radius: 10px;
+          padding: 9px 16px;
+          color: #34d399;
+          font-size: 13px;
+          font-weight: 700;
+          text-decoration: none;
+          letter-spacing: 0.01em;
+          transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+        @media (min-width: 640px) { .playstore-btn { font-size: 14px; padding: 10px 20px; } }
+        .playstore-btn:hover {
+          background: linear-gradient(135deg, rgba(52,211,153,0.25), rgba(52,211,153,0.14));
+          border-color: rgba(52,211,153,0.6);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 20px rgba(52,211,153,0.2);
+        }
+        .playstore-btn:active { transform: translateY(0px); }
+
+        /* Stack + CTA row: stack vertically on mobile */
+        .stack-cta-row {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        @media (min-width: 768px) {
+          .stack-cta-row {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+      `}</style>
+
+      {/* Background blobs */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", top: "5%", left: "-5%", width: 500, height: 500, background: "rgba(99,102,241,0.04)", borderRadius: "50%", filter: "blur(100px)" }} />
+        <div style={{ position: "absolute", bottom: "5%", right: "-5%", width: 400, height: 400, background: "rgba(139,92,246,0.04)", borderRadius: "50%", filter: "blur(100px)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(99,102,241,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.025) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+      </div>
+
+      {/* Container — mirrors ProjectsSection exactly */}
+      <div className="max-w-7xl mx-auto" style={{ position: "relative" }}>
+
+        {/* ── Heading ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 48, gap: 12 }}
         >
-          <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
-        </motion.span>
-      </motion.h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ height: 1, width: 40, background: "linear-gradient(to right, transparent, rgba(129,140,248,0.5))" }} />
+            <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 11, color: "rgba(129,140,248,0.6)", textTransform: "uppercase", letterSpacing: "0.25em" }}>experience</span>
+            <div style={{ height: 1, width: 40, background: "linear-gradient(to left, transparent, rgba(129,140,248,0.5))" }} />
+          </div>
+          <h2 style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 900, color: "#e2e8f0", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
+            Work Experience
+          </h2>
+        </motion.div>
 
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="bg-gradient-to-br from-zinc-800/80 to-black/80 backdrop-blur-sm shadow-2xl rounded-3xl p-4 sm:p-6 md:p-10"
-      >
-        <div className="flex flex-col md:flex-row gap-8 sm:gap-10">
-          {/* Left & Center */}
-          <div className="md:w-2/3 space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="bg-blue-200 p-2 sm:p-3 rounded-full shadow-md">
-                <Briefcase className="text-blue-700 w-5 h-5 sm:w-6 sm:h-6" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-100">
-                  College Website Developer
-                </h3>
-                <p className="text-gray-300 mt-2 text-sm sm:text-base leading-relaxed">
-                  Built a full-featured college website with a friend. Integrated admin panel for notices,
-                  gallery, faculty applications, and more.
-                </p>
-              </div>
+        {/* ══════════════════════════════
+            ONIT INDIA
+        ══════════════════════════════ */}
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: 24 }}>
+
+          {/* Badges */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(129,140,248,0.25)", borderRadius: 100, padding: "4px 12px" }}>
+              <Rocket size={11} style={{ color: "#818cf8" }} />
+              <span style={{ fontSize: 10, fontWeight: 700, color: "#818cf8", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'Fira Code', monospace" }}>Startup · Featured</span>
             </div>
-
-            <ul className="space-y-3 pl-2 sm:pl-8 text-gray-300 text-sm sm:text-base">
-              <li className="flex items-center gap-2">
-                <Code className="w-4 h-4 sm:w-5 sm:h-5 text-gray-100" />
-                Full-stack: React, Node.js, Express, MongoDB
-              </li>
-              <li className="flex items-center gap-2">
-                <User className="w-4 h-4 sm:w-5 sm:h-5 text-gray-100" />
-                Team of 2, close collaboration
-              </li>
-              <li className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-gray-100" />
-                <span className="flex gap-2 items-center">
-                  <span className="bg-blue-600 text-white px-2 py-0.5 rounded-md text-xs sm:text-sm">
-                    June 2025
-                  </span>
-                  Duration: 1 Month
-                </span>
-              </li>
-            </ul>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.2)", borderRadius: 100, padding: "4px 12px" }}>
+              <Store size={11} style={{ color: "#34d399" }} />
+              <span style={{ fontSize: 10, fontWeight: 700, color: "#34d399", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'Fira Code', monospace" }}>2 Apps on Play Store</span>
+            </div>
           </div>
 
-         
-        </div>
-      </motion.div>
-    </div>
+          {/* Card */}
+          <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(129,140,248,0.2)", borderRadius: 20, overflow: "hidden", position: "relative", boxShadow: "0 0 60px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.05)" }}>
+            <div style={{ height: 3, background: "linear-gradient(to right, #6366f1, #8b5cf6, #38bdf8)" }} />
+            <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at top left, rgba(99,102,241,0.07) 0%, transparent 60%)" }} />
+
+            <div className="card-pad" style={{ position: "relative", zIndex: 1 }}>
+
+              {/* Header */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 18, flexWrap: "wrap" }}>
+                <div style={{ background: "rgba(99,102,241,0.12)", border: "1px solid rgba(129,140,248,0.2)", borderRadius: 14, padding: 12, display: "flex", flexShrink: 0 }}>
+                  <Smartphone style={{ color: "#818cf8" }} size={26} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <h3 style={{ fontSize: "clamp(16px, 2.2vw, 24px)", fontWeight: 800, color: "#e2e8f0", margin: "0 0 4px", lineHeight: 1.25 }}>
+                    Software Development Engineer (Flutter) Intern
+                  </h3>
+                  <p style={{ color: "#818cf8", fontSize: "clamp(13px, 1.5vw, 16px)", fontWeight: 600, margin: "0 0 4px" }}>
+                    Onit India · Startup @ IIIT Delhi
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <Calendar size={12} style={{ color: "rgba(255,255,255,0.3)" }} />
+                    <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: "'Fira Code', monospace" }}>Feb 2026 – Apr 2026</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p style={{ color: "rgba(226,232,240,0.65)", fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: 1.75, marginBottom: 20 }}>
+                Joined as a Flutter Developer Intern at a fast-moving startup based at IIIT Delhi — independently built and shipped two production-ready mobile applications from scratch, integrated cloud and payment systems, and got both apps live on the Google Play Store within the internship period.
+              </p>
+
+              {/* Feature grid */}
+              <div className="onit-features" style={{ marginBottom: 20 }}>
+                {onitFeatures.map(({ icon: Icon, label, desc, color }) => (
+                  <div
+                    key={label}
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px", display: "flex", alignItems: "flex-start", gap: 10, transition: "border-color 0.25s, background 0.25s" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${color}30`; e.currentTarget.style.background = `${color}08`; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
+                  >
+                    <div style={{ background: `${color}15`, borderRadius: 8, padding: 7, display: "flex", flexShrink: 0 }}>
+                      <Icon size={15} style={{ color }} />
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: "#e2e8f0", margin: "0 0 2px" }}>{label}</p>
+                      <p style={{ fontSize: 11, color: "rgba(226,232,240,0.45)", margin: 0 }}>{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bullet points */}
+              <div className="onit-points" style={{ marginBottom: 20 }}>
+                {[
+                  "Built Task Provider & Task Performer apps using Flutter & Dart from design to deployment.",
+                  "Integrated AWS backend for scalable data management and real-time operations.",
+                  "Implemented secure role-based authentication and user access management.",
+                  "Razorpay payment gateway integrated for seamless in-app transactions.",
+                  "Collaborated across frontend, APIs, QA testing, and full deployment pipeline.",
+                ].map((point, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10, breakInside: "avoid" }}>
+                    <CheckCircle2 size={14} style={{ color: "#34d399", flexShrink: 0, marginTop: 2 }} />
+                    <p style={{ fontSize: "clamp(12px, 1.3vw, 14px)", color: "rgba(226,232,240,0.65)", lineHeight: 1.65, margin: 0 }}>{point}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stack + Play Store CTA */}
+              <div className="stack-cta-row">
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", fontFamily: "'Fira Code', monospace", flexShrink: 0 }}>stack:</span>
+                  {["Flutter", "Dart", "AWS", "Firebase", "Razorpay", "REST APIs"].map((tech) => (
+                    <span key={tech} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 100, background: "rgba(129,140,248,0.08)", border: "1px solid rgba(129,140,248,0.2)", color: "#a5b4fc", fontFamily: "'Fira Code', monospace" }}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.onitapp.india" target="_blank" rel="noopener noreferrer" className="playstore-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M3.18 1.07C2.45 1.48 2 2.25 2 3.13v17.74c0 .88.45 1.65 1.18 2.06l.1.06 9.93-9.93v-.23L3.28 3.01l-.1.06z" fill="#34d399"/>
+                    <path d="M16.34 16.25l-3.31-3.31v-.23l3.31-3.31.07.04 3.92 2.23c1.12.63 1.12 1.68 0 2.32l-3.92 2.23-.07.03z" fill="#34d399" opacity="0.8"/>
+                    <path d="M16.41 16.22L13.03 12.9 3.18 22.93c.37.39.94.44 1.59.08l11.64-6.79" fill="#34d399" opacity="0.6"/>
+                    <path d="M16.41 7.78L4.77 1c-.65-.37-1.22-.32-1.59.08L13.03 11.1l3.38-3.32z" fill="#34d399" opacity="0.4"/>
+                  </svg>
+                  View on Play Store
+                  <ExternalLink size={13} />
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ══════════════════════════════
+            INGRAHAM COLLEGE
+        ══════════════════════════════ */}
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: 24 }}>
+          <div
+            style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 20, overflow: "hidden", position: "relative", transition: "border-color 0.3s" }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(56,189,248,0.2)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; }}
+          >
+            <div style={{ height: 2, background: "linear-gradient(to right, #38bdf8, #6366f1, transparent)" }} />
+
+            <div className="card-pad">
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 16, flexWrap: "wrap" }}>
+                <div style={{ background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.2)", borderRadius: 12, padding: 12, display: "flex", flexShrink: 0 }}>
+                  <Globe style={{ color: "#38bdf8" }} size={24} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <h3 style={{ fontSize: "clamp(15px, 2vw, 22px)", fontWeight: 800, color: "#e2e8f0", margin: "0 0 4px" }}>Full Stack Developer Intern</h3>
+                  <p style={{ color: "#38bdf8", fontSize: "clamp(12px, 1.4vw, 15px)", fontWeight: 600, margin: "0 0 4px" }}>Ingraham Institute Degree College, Ghaziabad</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <Calendar size={12} style={{ color: "rgba(255,255,255,0.3)" }} />
+                    <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: "'Fira Code', monospace" }}>Jul 2025 – Aug 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <p style={{ color: "rgba(226,232,240,0.6)", fontSize: "clamp(13px, 1.3vw, 15px)", lineHeight: 1.75, marginBottom: 16 }}>
+                Developed and deployed a modern college management website with seamless frontend-backend integration and a full admin panel.
+              </p>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+                {[
+                  "Built complete MERN stack college website with responsive UI and scalable backend.",
+                  "Admin panel for notices, faculty, gallery management, and dynamic content updates.",
+                  "Handled API integration, authentication, database management, and deployment.",
+                  "Optimized frontend performance and cross-device user experience.",
+                ].map((point, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                    <CheckCircle2 size={14} style={{ color: "#38bdf8", flexShrink: 0, marginTop: 2 }} />
+                    <p style={{ fontSize: "clamp(12px, 1.3vw, 14px)", color: "rgba(226,232,240,0.6)", lineHeight: 1.65, margin: 0 }}>{point}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", fontFamily: "'Fira Code', monospace", flexShrink: 0 }}>stack:</span>
+                {["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"].map((tech) => (
+                  <span key={tech} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 100, background: "rgba(56,189,248,0.07)", border: "1px solid rgba(56,189,248,0.18)", color: "#7dd3fc", fontFamily: "'Fira Code', monospace" }}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ══════════════════════════════
+            ACHIEVEMENTS
+        ══════════════════════════════ */}
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          <div style={{ background: "rgba(99,102,241,0.03)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: 20, position: "relative", overflow: "hidden" }} className="card-pad">
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, rgba(129,140,248,0.4), transparent)" }} />
+
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ background: "rgba(99,102,241,0.15)", border: "1px solid rgba(129,140,248,0.2)", borderRadius: 12, padding: 10, display: "flex" }}>
+                <Trophy style={{ color: "#818cf8" }} size={20} />
+              </div>
+              <h3 style={{ fontSize: "clamp(16px, 2.2vw, 24px)", fontWeight: 800, color: "#e2e8f0", margin: 0 }}>Achievements</h3>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 10 }}>
+              {achievements.map((achievement, index) => (
+                <div
+                  key={index}
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "14px 16px", color: "rgba(226,232,240,0.65)", fontSize: "clamp(12px, 1.2vw, 14px)", lineHeight: 1.7, transition: "border-color 0.25s, color 0.25s", cursor: "default", display: "flex", alignItems: "flex-start", gap: 10 }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(129,140,248,0.3)"; e.currentTarget.style.color = "rgba(226,232,240,0.9)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; e.currentTarget.style.color = "rgba(226,232,240,0.65)"; }}
+                >
+                  <Star size={12} style={{ color: "#818cf8", flexShrink: 0, marginTop: 3 }} fill="currentColor" />
+                  {achievement}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
   );
 };
 

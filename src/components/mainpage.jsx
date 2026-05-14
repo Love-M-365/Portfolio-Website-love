@@ -71,11 +71,12 @@ export default function Home() {
         </div>
 
         {/* Centered Links on Desktop */}
-        <div className="hidden md:flex gap-6 text-sm md:text-base absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden md:flex gap-6 text-sm md:text-base absolute left-1/2 transform -translate-x-1/2" >
           {navLinks.map((nav, i) => (
             <motion.a
               key={i}
               href={nav.link}
+              style={{ fontFamily: "poppins" }}
               whileTap={{ scale: 0.95, boxShadow: "0 0 10px #7fdf7c" }}
               whileHover={{ scale: 1.1 }}
               {...(nav.download && { download: true })}
@@ -152,8 +153,7 @@ export default function Home() {
     <h2 className="text-[1.5rem]  text-[#85c1e9] font-bold">I AM</h2>
     <Name />
     <p className="text-base sm:text-lg  text-[whitesmoke] leading-relaxed max-w-xl  mx-auto md:mx-0" >
-      A Full Stack Developer who enjoys building clean, user-friendly, and meaningful digital experiences. From crafting responsive interfaces to exploring smart backend systems, I love turning ideas into real-world solutions. Driven by curiosity and creativity, I strive to write code that not only works — but makes an impact.
-    </p>
+     Full Stack & Flutter Developer focused on building scalable, high performance digital experiences that blend clean design with real world functionality. With experience in MERN stack, cloud integration, AI driven systems, and cross platform mobile development, I love turning complex ideas into intuitive products that users genuinely enjoy. Constantly exploring, learning, and innovating - I build with both creativity and purpose.    </p>
   </motion.div>
 
   {/* Right: Profile Image + Tags */}

@@ -7,9 +7,25 @@ import weskillImg from "../assets/weskilll.jpeg";
 import agrosarthiImg from "../assets/agrosathi.jpeg";
 import nextstepImg from "../assets/nextstep.jpeg";
 import maptyImg from "../assets/mapty.png";
-
+import clarioImg from "../assets/clario.jpeg";
 
 const projects = [
+  {
+  title: "Clario",
+  description:
+    "Clario is an AI-powered mental wellness and journaling mobile application built using Flutter and Firebase. It features multilingual AI chat support, mood-based journaling, relationship mapping, personalized wellness insights, and secure Google Authentication. The app integrates Google Cloud services and scalable backend APIs to deliver a smooth and responsive cross-platform experience.",
+  video: "/videos/clarioD.mp4",
+  image: clarioImg,
+  tech: [
+    "Flutter",
+    "Firebase",
+    "Google Cloud",
+    "AI Chatbot",
+    "Cloud Run",
+    "Dart",
+  ],
+  github: "https://github.com/Love-M-365/clario",
+},
   {
     title: "Spend Smart",
     description:
