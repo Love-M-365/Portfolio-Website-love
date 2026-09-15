@@ -9,6 +9,7 @@ import CertificateSection from './components/Certifiaction'
 import ExperienceSection from './components/Experience'
 import GoogleHackathonAchievement from './components/Achieve'
 import SkillsSection from './components/SkillsSection'
+import LeetCodeTracker from './components/LeetCodeTracker'
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,7 +22,7 @@ export default function App() {
 
   return (
     <div className="w-full overflow-x-hidden">
-      <div style={{ width: "100%", height: "100%", background: "#253237" }}>
+      <div style={{ width: "100%", height: "100%", background: "#030712" }}>
 
         {/* ── Hero ── */}
         <div style={{ position: "relative" }}>
@@ -29,14 +30,19 @@ export default function App() {
         </div>
 
         {/* ── Skills ── */}
-        <SkillsSection/>
+        <SkillsSection />
 
         {/* ── Achievement ── */}
         <section id="ach">
           <GoogleHackathonAchievement />
         </section>
 
-         {/* ── Experience ── */}
+        {/* ── LeetCode Active Tracker (After Achievements) ── */}
+        <section id="leetcode">
+          <LeetCodeTracker />
+        </section>
+
+        {/* ── Experience ── */}
         <section id="experience">
           <ExperienceSection />
         </section>
@@ -55,8 +61,6 @@ export default function App() {
         <section id="certification">
           <CertificateSection />
         </section>
-
-       
 
         {/* ── Resume ── */}
         <section id="Resume">

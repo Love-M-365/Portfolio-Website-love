@@ -22,7 +22,7 @@ import meee from "../assets/meee.jpg";
 const stats = [
   { icon: Users, value: "278K+", label: "Participants", color: "#818cf8" },
   { icon: Globe, value: "185K+", label: "Teams", color: "#60a5fa" },
-  { icon: Trophy, value: "Top 100", label: "Finalist", color: "#a78bfa" },
+  { icon: Trophy, value: "Top 10", label: "Finalist (Mental Wellness)", color: "#a78bfa" },
   { icon: MapPin, value: "Bengaluru", label: "The Leela Palace", color: "#38bdf8" },
 ];
 
@@ -260,10 +260,10 @@ export default function GoogleHackathonAchievement() {
                 style={{ display: "flex", flexDirection: "column", gap: 14 }}
               >
                 <p style={{ color: "rgba(226,232,240,0.85)", fontSize: "clamp(14px, 2.5vw, 17px)", lineHeight: 1.7 }}>
-                  Selected among{" "}
-                  <span style={{ color: "#818cf8", fontWeight: 700 }}>100 finalist teams</span> from over{" "}
+                  Recognized as a{" "}
+                  <span style={{ color: "#818cf8", fontWeight: 700 }}>Top 10 Finalist team</span> (Youth Mental Wellness track) from over{" "}
                   <span style={{ color: "#818cf8", fontWeight: 700 }}>185,000+ teams</span> and{" "}
-                  <span style={{ color: "#818cf8", fontWeight: 700 }}>278,000 participants</span> across India.
+                  <span style={{ color: "#818cf8", fontWeight: 700 }}>278,000+ participants</span> across India.
                 </p>
 
                 <p style={{ color: "rgba(226,232,240,0.5)", fontSize: "clamp(13px, 2vw, 15px)", lineHeight: 1.8 }}>

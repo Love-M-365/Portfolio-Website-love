@@ -13,9 +13,10 @@ export default function Home() {
     { label: "Home", link: "#home" },
     { label: "Skills", link: "#skills" },
     { label: "Achievements", link: "#ach" },
+    { label: "LeetCode", link: "#leetcode" },
+    { label: "Experience", link: "#experience" },
     { label: "MyStory", link: "#ms" },   
     { label: "Projects", link: "#projects" },
-    { label: "Experience", link: "#experience" },
     { label: "Certificates", link: "#certification" },
     { label: "Resume", link: "#Resume" },
     { label: "Connect", link: "#connect" },
@@ -173,7 +174,7 @@ export default function Home() {
 
     {/* BADGES */}
     <div className="flex flex-wrap justify-center mt-4 gap-2 sm:gap-3 px-4">
-      {["Frontend Dev", "Backend Dev", "MERN Stack","Web Dev"].map((tag, i) => (
+      {["SDE Intern", "Flutter & Dart", "MERN Stack", "GCP & Cloud", "350+ LeetCode"].map((tag, i) => (
         <span
           key={i}
           className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out hover:border-[#7fdf7c] hover:text-[#7fdf7c]"
