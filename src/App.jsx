@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { Analytics } from "@vercel/analytics/next"
 import Home from './components/mainpage'
 import ProjectsSection from './components/ProjectSection'
 import ResumePage from './components/Resume'
